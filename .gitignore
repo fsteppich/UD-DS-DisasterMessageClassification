@@ -1,0 +1,6 @@
+*.pickle
+**/.ipynb_checkpoints/
+.DS_Store
+.idea/shelf
+.idea/usage.statistics.xml
+.idea/workspace.xml
