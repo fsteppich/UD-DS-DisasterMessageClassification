@@ -1,6 +1,11 @@
 *.pickle
+*.sqlite
 **/.ipynb_checkpoints/
-.DS_Store
+**/__pycache__/
+**/__bak/
+.idea/dataSources*
+.idea/dataSources/
 .idea/shelf
 .idea/usage.statistics.xml
 .idea/workspace.xml
+.DS_Store
