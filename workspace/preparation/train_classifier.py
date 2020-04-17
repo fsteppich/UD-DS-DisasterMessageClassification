@@ -3,6 +3,7 @@ import time
 import pickle
 import util     # local util file
 
+
 import pandas as pd
 import numpy as np
 import sqlalchemy as sql
@@ -51,8 +52,7 @@ def load_data(database_filepath):
 
     out.info("Table loaded into DataFrame with {} columns and {} rows".format(df.shape[1], df.shape[0]))
 
-    # TODO: don't use test setting
-    category_names = df.columns.tolist()[4:] # skip first 4 (id, ..., genre) columns
+    category_names = df.columns.tolist()[4:]  # skip first 4 (id, ..., genre) columns
     # category_names = list({'water', 'medical_help', 'medical_products'})
     out.info("Using {} columns as classification target: {}".format(len(category_names), category_names))
 
@@ -69,7 +69,8 @@ def build_model(grid_search=False):
     :return: The data model
     """
     pipeline = Pipeline([
-        ('vect', nlp.LemmatizingUrlCleaningCountVectorizer()),  # CountVectorizer(tokenizer=tokenize)),
+        ('vect', nlp.LemmatizingUrlCleaningCountVectorizer()),
+        #('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
         #('clf', MultiOutputClassifier(RandomForestClassifier()))
         #('clf', MultiOutputClassifier(KNeighborsClassifier()))
@@ -186,15 +187,9 @@ def save_model(model, model_filepath):
 
 
 def main():
-    argc = len(sys.argv)
-    if argc == 3 or argc == 4:
+    if len(sys.argv) == 3:
         start_time_program = time.time()
         database_filepath, model_filepath = sys.argv[1:]
-
-        classifier_name = None
-        if argc == 4:
-            classifier_name = sys.argv[3]
-
         print()
 
         start_time = time.time()

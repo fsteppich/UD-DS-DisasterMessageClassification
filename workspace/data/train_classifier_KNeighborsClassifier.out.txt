@@ -1,0 +1,5 @@
+>> Execution of the pipelines was performed on a Lenovo ThinkPad T520 (Intel(R) Core(TM) i5-2520M CUP @ 2.50GHz, 16.0GB RAM, Windows 10 Pro x64).
+
+
+Failed with memory fault (default settings)
+KNeighborsClassifier

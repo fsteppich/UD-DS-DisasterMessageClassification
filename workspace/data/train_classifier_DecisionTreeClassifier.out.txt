@@ -1,0 +1,94 @@
+>> Execution of the pipelines was performed on a Lenovo ThinkPad T520 (Intel(R) Core(TM) i5-2520M CUP @ 2.50GHz, 16.0GB RAM, Windows 10 Pro x64).
+
+
+"C:\Program Files\Python38\python.exe" C:/Users/fsteppich/UD-DS-DisasterMessageClassification/workspace/preparation/train_classifier.py data/disaster_data.sqlite data/disaster_message_classifier.pickle
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\fsteppich\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     C:\Users\fsteppich\AppData\Roaming\nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package wordnet to
+[nltk_data]     C:\Users\fsteppich\AppData\Roaming\nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+
+Loading data...
+    DATABASE: data/disaster_data.sqlite
+[*] Loading data from table 'Messages'
+[*] Table loaded into DataFrame with 40 columns and 26176 rows
+[*] Using 36 columns as classification target: ['related', 'request', 'offer', 'aid_related', 'medical_help', 'medical_products', 'search_and_rescue', 'security', 'military', 'child_alone', 'water', 'food', 'shelter', 'clothing', 'money', 'missing_people', 'refugees', 'death', 'other_aid', 'infrastructure_related', 'transport', 'buildings', 'electricity', 'tools', 'hospitals', 'shops', 'aid_centers', 'other_infrastructure', 'weather_related', 'floods', 'storm', 'fire', 'earthquake', 'cold', 'other_weather', 'direct_report']
+Elapsed time: 0:00:01
+
+Building model...
+Elapsed time: 0:00:00
+
+Training model...
+[*] Training model on 20940 message(s)
+Fitting 2 folds for each of 2 candidates, totalling 4 fits
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 4 concurrent workers.
+[CV] vect__max_df=0.5 ................................................
+[CV] vect__max_df=1.0 ................................................
+[CV] vect__max_df=0.5 ................................................
+[CV] vect__max_df=1.0 ................................................
+[CV] ................................. vect__max_df=0.5, total=16.7min
+[CV] ................................. vect__max_df=0.5, total=16.8min
+[CV] ................................. vect__max_df=1.0, total=17.0min
+[Parallel(n_jobs=-1)]: Done   4 out of   4 | elapsed: 17.1min finished
+[CV] ................................. vect__max_df=1.0, total=17.0min
+[*] Best Parameters: {'vect__max_df': 0.5} @ 0.15873925501432665 (mean test score)
+Elapsed time: 0:28:34
+
+Evaluating model...
+[*] Evaluating model on 5236 message(s)
+[!] Suppressing zero division warnings in classification report. Using 1.0 if score is ill-defined.
+    Watch for 1.0 scores and decide if they appear to often.
+[*] related                   F1:  0.76   Precision: 0.761   Recall: 0.759   Accuracy: 0.759
+[*] request                   F1:  0.85   Precision: 0.851   Recall:  0.85   Accuracy:  0.85
+[*] offer                     F1: 0.992   Precision: 0.991   Recall: 0.992   Accuracy: 0.992
+[*] aid_related               F1: 0.705   Precision: 0.705   Recall: 0.704   Accuracy: 0.704
+[*] medical_help              F1: 0.904   Precision:   0.9   Recall: 0.909   Accuracy: 0.909
+[*] medical_products          F1: 0.939   Precision: 0.938   Recall:  0.94   Accuracy:  0.94
+[*] search_and_rescue         F1: 0.963   Precision: 0.961   Recall: 0.965   Accuracy: 0.965
+[*] security                  F1: 0.971   Precision: 0.969   Recall: 0.972   Accuracy: 0.972
+[*] military                  F1: 0.963   Precision: 0.961   Recall: 0.964   Accuracy: 0.964
+[*] child_alone               F1:   1.0   Precision:   1.0   Recall:   1.0   Accuracy:   1.0
+[*] water                     F1: 0.953   Precision: 0.954   Recall: 0.953   Accuracy: 0.953
+[*] food                      F1: 0.933   Precision: 0.933   Recall: 0.933   Accuracy: 0.933
+[*] shelter                   F1: 0.929   Precision: 0.928   Recall:  0.93   Accuracy:  0.93
+[*] clothing                  F1: 0.982   Precision: 0.981   Recall: 0.983   Accuracy: 0.983
+[*] money                     F1: 0.973   Precision: 0.973   Recall: 0.972   Accuracy: 0.972
+[*] missing_people            F1: 0.985   Precision: 0.985   Recall: 0.985   Accuracy: 0.985
+[*] refugees                  F1: 0.957   Precision: 0.956   Recall: 0.958   Accuracy: 0.958
+[*] death                     F1: 0.959   Precision: 0.958   Recall:  0.96   Accuracy:  0.96
+[*] other_aid                 F1: 0.812   Precision: 0.806   Recall: 0.819   Accuracy: 0.819
+[*] infrastructure_related    F1: 0.901   Precision: 0.897   Recall: 0.906   Accuracy: 0.906
+[*] transport                 F1: 0.939   Precision: 0.938   Recall: 0.941   Accuracy: 0.941
+[*] buildings                 F1: 0.949   Precision: 0.948   Recall:  0.95   Accuracy:  0.95
+[*] electricity               F1: 0.975   Precision: 0.974   Recall: 0.975   Accuracy: 0.975
+[*] tools                     F1:  0.99   Precision: 0.989   Recall: 0.992   Accuracy: 0.992
+[*] hospitals                 F1: 0.981   Precision: 0.981   Recall: 0.981   Accuracy: 0.981
+[*] shops                     F1: 0.991   Precision: 0.991   Recall: 0.992   Accuracy: 0.992
+[*] aid_centers               F1: 0.982   Precision: 0.982   Recall: 0.983   Accuracy: 0.983
+[*] other_infrastructure      F1: 0.929   Precision: 0.925   Recall: 0.933   Accuracy: 0.933
+[*] weather_related           F1: 0.847   Precision: 0.847   Recall: 0.846   Accuracy: 0.846
+[*] floods                    F1: 0.938   Precision: 0.937   Recall:  0.94   Accuracy:  0.94
+[*] storm                     F1:  0.94   Precision: 0.939   Recall:  0.94   Accuracy:  0.94
+[*] fire                      F1: 0.988   Precision: 0.988   Recall: 0.988   Accuracy: 0.988
+[*] earthquake                F1: 0.959   Precision:  0.96   Recall: 0.959   Accuracy: 0.959
+[*] cold                      F1: 0.978   Precision: 0.978   Recall: 0.978   Accuracy: 0.978
+[*] other_weather             F1: 0.923   Precision:  0.92   Recall: 0.925   Accuracy: 0.925
+[*] direct_report             F1: 0.798   Precision: 0.796   Recall:   0.8   Accuracy:   0.8
+
+[*] >> Avg.                   F1: 0.932   Precision: 0.931   Recall: 0.933   Accuracy: 0.933
+Elapsed time: 0:01:26
+
+Saving model...
+    MODEL: data/disaster_message_classifier.pickle
+Elapsed time: 0:00:00
+
+
+Trained model saved!
+Total execution time: 0:30:02
+
+
+Process finished with exit code 0
