@@ -52,12 +52,12 @@ def load_data(database_filepath):
     out.info("Table loaded into DataFrame with {} columns and {} rows".format(df.shape[1], df.shape[0]))
 
     # TODO: don't use test setting
-    category_names = list(set(df.columns.tolist()).difference(util.COL_SET_NO_CATEGORY))
+    category_names = df.columns.tolist()[4:] # skip first 4 (id, ..., genre) columns
     # category_names = list({'water', 'medical_help', 'medical_products'})
     out.info("Using {} columns as classification target: {}".format(len(category_names), category_names))
 
     X = df[util.COL_MESSAGE]
-    Y = df[list(category_names)]
+    Y = df[category_names]
     return X, Y, category_names
 
 
@@ -71,9 +71,9 @@ def build_model(grid_search=False):
     pipeline = Pipeline([
         ('vect', nlp.LemmatizingUrlCleaningCountVectorizer()),  # CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
-        ('clf', MultiOutputClassifier(RandomForestClassifier()))
+        #('clf', MultiOutputClassifier(RandomForestClassifier()))
         #('clf', MultiOutputClassifier(KNeighborsClassifier()))
-        #('clf', MultiOutputClassifier(DecisionTreeClassifier()))
+        ('clf', MultiOutputClassifier(DecisionTreeClassifier()))
     ])
 
     parameters = {
@@ -186,9 +186,15 @@ def save_model(model, model_filepath):
 
 
 def main():
-    if len(sys.argv) == 3:
+    argc = len(sys.argv)
+    if argc == 3 or argc == 4:
         start_time_program = time.time()
         database_filepath, model_filepath = sys.argv[1:]
+
+        classifier_name = None
+        if argc == 4:
+            classifier_name = sys.argv[3]
+
         print()
 
         start_time = time.time()
