@@ -32,7 +32,7 @@ The project is running with Python 3. These libraries are required:
 * nltk
 * pickle
 
-To install `fs-ds-util` you can eighter use
+To install `fs-ds-util` you can either use
  
 	# pip install -i https://test.pypi.org/simple/ fs-ds-util
 	
