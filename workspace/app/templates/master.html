@@ -90,7 +90,9 @@
                         <ul class="list-group">
                             {% for category, classification in classification_result_part1.items() %}
                             {% if classification == 1 %}
-                            <li class="list-group-item list-group-item-primary text-center py-1">{{category.replace('_', ' ').title()}}</li>
+                            <li class="list-group-item list-group-item-action list-group-item-primary text-center py-1" onclick="alert('Send message to {{category.title()}} agency'); event.stopPropagation();">
+                                {{category.replace('_', ' ').title()}}
+                            </li>
                             {% else %}
                             <li class="list-group-item text-center py-1">{{category.replace('_', ' ').title()}}</li>
                             {% endif %}
@@ -101,7 +103,9 @@
                         <ul class="list-group">
                             {% for category, classification in classification_result_part2.items() %}
                             {% if classification == 1 %}
-                            <li class="list-group-item list-group-item-primary text-center py-1">{{category.replace('_', ' ').title()}}</li>
+                            <li class="list-group-item list-group-item-action list-group-item-primary text-center py-1" onclick="alert('Send message to {{category.title()}} agency'); event.stopPropagation();">
+                                {{category.replace('_', ' ').title()}}
+                            </li>
                             {% else %}
                             <li class="list-group-item text-center py-1">{{category.replace('_', ' ').title()}}</li>
                             {% endif %}
